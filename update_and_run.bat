@@ -20,12 +20,11 @@ timeout /T 3 /NOBREAK >nul
 echo - Done.
 
 echo.
-echo [3/4] Updating repo (git pull) in: %~dp0
+echo [3/4] Updating repo (git pull) in: "%~dp0"
 rem cd to this script directory and git pull
-pushd "%~dp0" >nul
+cd /d "%~dp0"
 git pull
 set "GIT_EXIT=%ERRORLEVEL%"
-popd >nul
 
 if not "%GIT_EXIT%"=="0" (
   echo - git pull failed with exit code %GIT_EXIT%.
@@ -36,9 +35,8 @@ echo - git pull succeeded.
 echo.
 echo [4/4] Starting: %EXE_NAME%
 rem Run exe from this script directory
-pushd "%~dp0" >nul
+cd /d "%~dp0"
 start "" "%~dp0%EXE_NAME%"
-popd >nul
 echo - Started (check task manager if needed).
 
 endlocal
