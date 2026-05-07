@@ -1,19 +1,14 @@
 @echo off
 setlocal
 
-set "EXE_NAME=zWebView2Agent.exe"
 
 cd /d "%~dp0"
 
 echo.
 echo [1/4] Killing process: %EXE_NAME%
 rem Kill process (ignore if not running)
-rem taskkill /F /IM "%EXE_NAME%" >nul 2>&1
-rem if "%ERRORLEVEL%"=="0" (
-rem  echo - Killed (or terminated) successfully.
-rem ) else (
-rem   echo - Not running or could not be terminated (continuing).
-rem )
+taskkill /F /IM zWebView2Agent.exe >nul 2>&1
+
 
 echo.
 echo [2/4] Waiting 3 seconds...
